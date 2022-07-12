@@ -1,19 +1,19 @@
 public class CreditPaymentService {
 
     public String calculate(int credit, int time, double procent) {
-        double k;
-        double mps;
-        double l;
-        double s;
+        double coefficient;
+        double rate;
+        double sum;
+        double degree;
         double result;
 
-        mps = (procent / 12) / 100; //Месячная процентная ставка
-        l = (1 + mps);
-        s = Math.pow(l, time); //Возведение в степень
-        k = (mps * s) / (s - 1); //коэффициент аннуитета
-        result = credit * k; //Результат
-        String m = String.format("%.0f", result); //Округление
+        rate = (procent / 12) / 100; //Месячная процентная ставка
+        sum = (1 + rate);
+        degree = Math.pow(sum, time); //Возведение в степень
+        coefficient = (rate * degree) / (degree - 1); //коэффициент аннуитета
+        result = credit * coefficient; //Результат
+        String rounding = String.format("%.0f", result); //Округление
 
-        return m;
+        return rounding;
     }
 }
